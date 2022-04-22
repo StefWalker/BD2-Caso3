@@ -8,8 +8,12 @@ const actualizarOrdenesEnvioEnCache = async () => {
     return ordenesEnvio;
 }
 
-const listarOrdenesEnvioCliente = async (nombreCliente) => {
-    const ordenesEnvio = (await cache.get("ordenesEnvio")) || (await actualizarOrdenesEnvioEnCache());
+const obtenerOrdenesEnvio = async () => {
+    return (await cache.get("ordenesEnvio")) || (await actualizarOrdenesEnvioEnCache());
+}
+
+const listarOrdenesEnvioCliente = async ({nombreCliente}) => {
+    const ordenesEnvio = await obtenerOrdenesEnvio();
     return ordenesEnvio.filter(oe = oe.nombreCliente === nombreCliente);
 }
 
@@ -21,8 +25,14 @@ const actualizarUbicacionOrdenEnvio = async ({idOrdenEnvio, pais}) => {
     enviarMensaje({funcion: "actualizarOrdenesEnvioEnCache"});
 }
 
+const obtenerOrdenEnvio = async ({idOrdenEnvio}) => {
+    const ordenesEnvio = await obtenerOrdenesEnvio();
+    return ordenesEnvio.filter(oe => oe._id === idOrdenEnvio)[0];
+}
+
 module.exports = {
     listarOrdenesEnvioCliente,
     actualizarOrdenesEnvioEnCache,
-    actualizarUbicacionOrdenEnvio
+    actualizarUbicacionOrdenEnvio,
+    obtenerOrdenEnvio
 }
