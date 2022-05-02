@@ -1,15 +1,16 @@
 const { MongoClient } = require("mongodb");
 
 const conexionesEspaciosPaises = {
-    "costa rica": "mongodb://localhost:27017,localhost:27018",
-    "francia": "mongodb://25.76.230.45:27017,25.76.230.45:27018"
+    "costa rica": "mongodb://25.3.49.102:27017,25.3.49.102:27018,25.3.49.102:27019,25.3.49.102:27020",
+    "francia": "mongodb://25.3.49.102:27017,25.3.49.102:27018,25.3.49.102:27019,25.3.49.102:27020",
+    "italia": "mongodb://25.6.180.2:27017,25.6.180.2:27018,25.6.180.2:27019,25.6.180.2:27020",
+    "grecia": "mongodb://25.6.180.2:27017,25.6.180.2:27018,25.6.180.2:27019,25.6.180.2:27020"
 };
 
-const conexionOrdenesEnvio = "mongodb://localhost:27018";
+const conexionOrdenesEnvio = "mongodb://25.6.180.2:27028";
 
 class ConexionBaseDatos {
     static instanciasEspaciosPaises = {};
-
     static instanciaOrdenesEnvio = null;
 }
 
@@ -49,11 +50,11 @@ const getColeccionBDEspacios = async (pais, coleccion) => {
 }
 
 const getDatosColeccionBDEspacios = async (pais, coleccion) => {
-    const datos = [];
-    await (await getColeccionBDEspacios(pais, coleccion)).find().forEach(
-        dato => datos.push(dato)
-    );
-    return datos;
+    const docs = [];
+    await (await getColeccionBDEspacios(pais, coleccion)).find().forEach(doc => {
+        if((doc.pais || doc.origen) === pais) docs.push(doc);
+    });
+    return docs;
 }
 
 const getColeccionBDOrdenesEnvio = async (coleccion) => {
@@ -61,9 +62,9 @@ const getColeccionBDOrdenesEnvio = async (coleccion) => {
 }
 
 const getDatosColeccionBDOrdenesEnvio = async (coleccion) => {
-    const datos = [];
-    await (await getColeccionBDOrdenesEnvio(coleccion)).find().forEach(dato => datos.push(dato));
-    return datos;
+    const docs = [];
+    await (await getColeccionBDOrdenesEnvio(coleccion)).find().forEach(doc => docs.push(doc));
+    return docs;
 }
 
 module.exports = {
