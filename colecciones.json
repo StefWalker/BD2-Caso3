@@ -1,0 +1,41 @@
+{
+    "espacios": {
+        "pais": "costa rica",
+        "origen": "costa rica",
+        "destino": "ecuador",
+        "nombreEmpresa": "Distribuidores",
+        "longitud": 21,
+        "altura": 32,
+        "profundidad": 12,
+        "pesoMaximo": 321,
+        "precioXkilo": 213,
+        "fechaSalida": "10/8/2022",
+        "fechaLlegada": "10/10/2022"
+    },
+    "espaciosTomados": {
+        "idEspacio": "32131232132",
+        "peso": 12,
+        "pais": "costa rica",
+        "longitud": 13,
+        "altura": 43,
+        "profundidad": 321,
+        "nombreCliente": "Raúl",
+        "producto": "libros"
+    },
+    "ordenesEnvio": {
+        "idEspacio": "989324392023",
+        "peso": 321,
+        "pais": "costa rica",
+        "longitud": 321,
+        "altura": 321,
+        "profundidad": 321,
+        "nombreCliente": "Raúl",
+        "producto": "libros",
+        "paqueteEnviado": true,
+        "fechaToma": "12/06/2021",
+        "precio": 45231,
+        "idEspacioTomado": "432kj4h32iojuoi",
+        "ubicacion": "ecuador",
+        "fechaEnvio": "16/07/2022"
+    }
+}
