@@ -20,7 +20,10 @@
         "altura": 43,
         "profundidad": 321,
         "nombreCliente": "Raúl",
-        "producto": "libros"
+        "producto": "libros",
+        "paqueteEnviado": true,
+        "fechaToma": "12/06/2021",
+        "precio": 321321
     },
     "ordenesEnvio": {
         "idEspacio": "989324392023",
